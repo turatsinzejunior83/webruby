@@ -8,9 +8,15 @@ namespace MovieApp.NewDb
         {
             using (var db = new MovieContext())
             {
-                db.Movies.Add(new Movietbl { title = "Vimpire diaries" });
-                db.Movies.Add(new Movietbl { year = "2019" });
-                db.Movies.Add(new Movietbl { category_name = "horror Movie" });
+                Console.WriteLine("enter the movie title");
+                string title = Console.ReadLine();
+                Console.WriteLine("enter the movie year");
+                string year = Console.ReadLine();
+                Console.WriteLine("enter the movie category_name");
+                string category_name = Console.ReadLine();
+                db.Movies.Add(new Movietbl { title =title });
+                db.Movies.Add(new Movietbl { year = year });
+                db.Movies.Add(new Movietbl { category_name = category_name });
                 var count = db.SaveChanges();
                 Console.WriteLine("{0} records saved to database", count);
 
@@ -18,7 +24,7 @@ namespace MovieApp.NewDb
                 Console.WriteLine("All blogs in database:");
                 foreach (var Movietbl in db.Movies)
                 {
-                    Console.WriteLine(" - {0}", Movietbl.title, Movietbl.year, Movietbl.category_name);
+                    Console.WriteLine(" - {0}{1}{2}", Movietbl.title, Movietbl.year, Movietbl.category_name);
                 }
             }
         }
